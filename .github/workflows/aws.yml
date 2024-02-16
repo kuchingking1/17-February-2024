@@ -1,5 +1,7 @@
 name: AWS
-on: workflow_dispatch
+
+on:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,7 +24,7 @@ jobs:
 
       - name: Enabling RDP Access [CPU 2 Core - 7GB Ram - 256 SSD]
         run: |
-          Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
+          Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0
           Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
           Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
 
